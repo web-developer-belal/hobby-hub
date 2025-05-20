@@ -1,0 +1,13 @@
+.menu li a{
+    border-radius: 0;
+    font-weight: 700;
+}
+.menu{
+    gap:10px;
+
+}
+.menu li a:hover{
+    background: none;
+    color:#ff5543;
+    border-bottom: 2px solid #ff5543;
+}
