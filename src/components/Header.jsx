@@ -1,209 +1,94 @@
-import React, { use } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
 import { toast } from "react-toastify";
-import "./header.css";
-import { FaRegUser } from "react-icons/fa";
+
 const Header = () => {
-  const { user, logout } = use(AuthContext);
-  const handelLogout = () => {
-    logout()
-      .then(() => {
-        toast("Logout successful");
-      })
-      .catch(() => {
-        toast("Logout fail");
-      });
+  const { user, logout } = useContext(AuthContext);
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const handleThemeToggle = (e) => {
+    setTheme(e.target.checked ? "dark" : "light");
   };
+
+  const handleLogout = () => {
+    logout()
+      .then(() => toast.success("Logout successful"))
+      .catch(() => toast.error("Logout failed"));
+  };
+
   return (
-    <div className="navbar bg-base-100 shadow-sm px-5 ">
+    <div className="navbar bg-base-100 shadow-sm px-5">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {" "}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? "text-primary border-b-2 border-primary" : ""
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/all-subscription-boxes"
-                className={({ isActive }) =>
-                  isActive ? "text-primary border-b-2 border-primary" : ""
-                }
-              >
-                Subscriptions
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/faq"
-                className={({ isActive }) =>
-                  isActive ? "text-primary border-b-2 border-primary" : ""
-                }
-              >
-                FAQ
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contact-us"
-                className={({ isActive }) =>
-                  isActive ? "text-primary border-b-2 border-primary" : ""
-                }
-              >
-                Contact Us
-              </NavLink>
-            </li>
-            {user && (
-              <li>
-                <NavLink
-                  to="/my-subscriptions"
-                  className={({ isActive }) =>
-                    isActive ? "text-primary border-b-2 border-primary" : ""
-                  }
-                >
-                  My subscriptions
-                </NavLink>
-              </li>
-            )}
-            {user ? (
-              <button
-                onClick={handelLogout}
-                className="btn btn-soft btn-error me-2"
-              >
-                Logout
-              </button>
+          <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/groups">All Groups</NavLink></li>
+            {user && <>
+              <li><NavLink to="/createGroup">Create Group</NavLink></li>
+              <li><NavLink to="/myGroups">My Groups</NavLink></li>
+            </>}
+            {!user ? (
+              <li><Link to="/login">Login</Link></li>
             ) : (
-              <Link to="/login" className="btn me-2 bg-black text-white">
-                Login
-              </Link>
+              <li><button onClick={handleLogout}>Logout</button></li>
             )}
           </ul>
         </div>
-        <Link
-          to="/"
-          className="text-xl font-extrabold tracking-wide flex items-center space-x-1"
-        >
-          <span className="text-primary">PetPaw</span>
-          <span className="text-black">Joy</span>
+        <Link to="/" className="text-xl font-extrabold tracking-wide flex items-center space-x-1">
+          <span className="text-primary">Hobby</span>
+          <span className="text-black dark:text-white">Hub</span>
         </Link>
       </div>
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "text-primary border-b-2 border-primary" : ""
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/all-subscription-boxes"
-              className={({ isActive }) =>
-                isActive ? "text-primary border-b-2 border-primary" : ""
-              }
-            >
-              Subscriptions
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/faq"
-              className={({ isActive }) =>
-                isActive ? "text-primary border-b-2 border-primary" : ""
-              }
-            >
-              FAQ
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact-us"
-              className={({ isActive }) =>
-                isActive ? "text-primary border-b-2 border-primary" : ""
-              }
-            >
-              Contact Us
-            </NavLink>
-          </li>
-          {user && (
-            <li>
-              <NavLink
-                to="/my-subscriptions"
-                className={({ isActive }) =>
-                  isActive ? "text-primary border-b-2 border-primary" : ""
-                }
-              >
-                My subscriptions
-              </NavLink>
-            </li>
-          )}
+          <li><NavLink to="/">Home</NavLink></li>
+          <li><NavLink to="/groups">All Groups</NavLink></li>
+          {user && <>
+            <li><NavLink to="/createGroup">Create Group</NavLink></li>
+            <li><NavLink to="/myGroups">My Groups</NavLink></li>
+          </>}
         </ul>
       </div>
-      <div className="navbar-end">
-        {user ? (
-          <button
-            onClick={handelLogout}
-            className="btn btn-soft btn-error me-2 md:flex hidden"
-          >
-            Logout
-          </button>
+
+      <div className="navbar-end gap-2">
+        {/* Theme Toggle */}
+        <label className="cursor-pointer grid place-items-center">
+          <input
+            type="checkbox"
+            className="toggle theme-controller"
+            onChange={handleThemeToggle}
+            checked={theme === "dark"}
+          />
+        </label>
+
+        {/* Auth Actions */}
+        {!user ? (
+          <Link to="/login" className="btn bg-primary text-white">Login</Link>
         ) : (
-          <Link to="/login" className="btn me-2 bg-black text-white">
-            Login
-          </Link>
-        )}
-        {user ? (
-          <div className="">
-            <Link
-              to="/user/profile"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                {user && user.photoURL ? (
-                  <img
-                    alt={user.displayName}
-                    title={user.displayName}
-                    src={user.photoURL}
-                  />
-                ) : (
-                  <img alt="User" title="User photo" src="/fakeuser.png" />
-                )}
+          <>
+            <button onClick={handleLogout} className="btn btn-error hidden md:flex">Logout</button>
+            <div className="avatar tooltip" data-tip={user.displayName}>
+              <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img
+                  src={user.photoURL || "/fakeuser.png"}
+                  alt={user.displayName || "User"}
+                />
               </div>
-            </Link>
-          </div>
-        ) : (
-          ""
+            </div>
+          </>
         )}
       </div>
     </div>
