@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const MyGroups = () => {
   const { user } = useContext(AuthContext);
@@ -18,20 +19,32 @@ const MyGroups = () => {
   }, [user]);
 
   const handelDelete = (id) => {
-    fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/group/${id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount == 1) {
-          const newGroups = groups.filter((data) => data._id != id);
-          setGroups(newGroups);
-          toast.success("Deleted successfully");
-        }
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will not be able to recover this group!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/group/${id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount == 1) {
+              const newGroups = groups.filter((data) => data._id != id);
+              setGroups(newGroups);
+              Swal.fire("Deleted!", "Your group has been deleted.", "success");
+            }
+          });
+      }
+    });
   };
 
   return (

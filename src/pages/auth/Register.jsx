@@ -29,7 +29,7 @@ const Register = () => {
         setLoading(false);
         form.reset();
         toast.success("Register successful");
-        const redirectTo = location.state || "/user/profile";
+        const redirectTo = location.state || "/";
         navigate(redirectTo);
       })
       .catch(() => {
@@ -45,7 +45,7 @@ const Register = () => {
       .then((result) => {
         setUser(result.user);
         toast.success("Login successful");
-        const redirectTo = location.state || "/user/profile";
+        const redirectTo = location.state || "/";
         navigate(redirectTo);
       })
       .catch((error) => {

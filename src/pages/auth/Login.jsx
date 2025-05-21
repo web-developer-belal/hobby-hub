@@ -12,8 +12,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   if (user) {
-    //toast.success("You already logged in.");
-    const redirectTo = location.state || "/user/profile";
+    const redirectTo = location.state || "/";
     navigate(redirectTo);
   }
 
@@ -31,7 +30,7 @@ const Login = () => {
         setLoading(false);
         toast.success("Login successful");
         form.reset();
-        const redirectTo = location.state || "/user/profile";
+        const redirectTo = location.state || "/";
         navigate(redirectTo);
       })
       .catch(() => {
@@ -45,7 +44,7 @@ const Login = () => {
       .then((result) => {
         setUser(result.user);
         toast.success("Login successful");
-        const redirectTo = location.state || "/user/profile";
+        const redirectTo = location.state || "/";
         navigate(redirectTo);
       })
       .catch(() => {
