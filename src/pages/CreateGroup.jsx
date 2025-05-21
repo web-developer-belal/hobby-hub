@@ -7,22 +7,26 @@ const CreateGroup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const newGroup = {
-      name: form.groupName.value,
-      category: form.category.value,
-      description: form.description.value,
-      location: form.location.value,
-      maxMembers: form.maxMembers.value,
-      startDate: form.startDate.value,
-      imageUrl: form.imageUrl.value,
-      creatorName: form.userName.value,
-      creatorEmail: form.userEmail.value,
-    };
 
-    console.log(newGroup);
-    toast.success("Group Created Successfully!");
-    form.reset();
+    const form = e.target;
+    const formData = new FormData(form);
+    const formValues = Object.fromEntries(formData.entries());
+    fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/groups`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(formValues),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          toast.success("Group Created Successfully!");
+          form.reset();
+        }else{
+          toast.error("Something wen'\t wrong.");
+        }
+      });
   };
 
   return (
@@ -37,7 +41,11 @@ const CreateGroup = () => {
           required
         />
 
-        <select name="category" className="select select-bordered w-full" required>
+        <select
+          name="category"
+          className="select select-bordered w-full"
+          required
+        >
           <option disabled selected>
             Choose Category
           </option>

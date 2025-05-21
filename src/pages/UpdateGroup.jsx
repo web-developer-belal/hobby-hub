@@ -1,35 +1,33 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { toast } from "react-toastify";
+import { useLoaderData, useParams } from "react-router";
 
 const UpdateGroup = () => {
   const { user } = useContext(AuthContext);
-  const group = {
-    groupName: "Nature Walkers",
-    category: "Hiking",
-    description: "A group for people who love to explore nature trails together.",
-    location: "Central Park, NYC",
-    maxMembers: 20,
-    startDate: "2025-06-15",
-    imageUrl: "https://i.ibb.co/sample-image.jpg",
-  };
+  const group = useLoaderData();
+  const { id } = useParams();
 
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
-    const updatedGroup = {
-      name: form.groupName.value,
-      category: form.category.value,
-      description: form.description.value,
-      location: form.location.value,
-      maxMembers: form.maxMembers.value,
-      startDate: form.startDate.value,
-      imageUrl: form.imageUrl.value,
-      updatedBy: user?.email,
-    };
-
-    console.log(updatedGroup);
-    toast.success("Group updated successfully!");
+    const formData = new FormData(form);
+    const formValues = Object.fromEntries(formData.entries());
+    fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/group/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(formValues),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.matchedCount == 1) {
+          toast.success("Group Updated Successfully!");
+        } else {
+          toast.error("Something wen'\t wrong.");
+        }
+      });
   };
 
   return (

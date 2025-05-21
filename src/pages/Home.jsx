@@ -1,55 +1,12 @@
-import { Link } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import { MdOutlineConnectWithoutContact } from "react-icons/md";
 import { AiOutlineSmile } from "react-icons/ai";
 import { BiBulb } from "react-icons/bi";
 import { Typewriter } from "react-simple-typewriter";
+import GroupCard from "../components/GroupCard";
 
 const Home = () => {
-  const groups = [
-    {
-      _id: "1",
-      name: "Weekend Hikers Club",
-      category: "Hiking",
-      startDate: "2025-06-10",
-      image: "https://images.unsplash.com/photo-1686854016020-f1ca2a268099?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      _id: "2",
-      name: "City Sketchers",
-      category: "Art",
-      startDate: "2025-06-15",
-      image: "https://images.unsplash.com/photo-1686854016020-f1ca2a268099?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      _id: "3",
-      name: "Board Game Nights",
-      category: "Gaming",
-      startDate: "2025-06-20",
-      image: "https://images.unsplash.com/photo-1686854016020-f1ca2a268099?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      _id: "4",
-      name: "Sunday Salsa Sessions",
-      category: "Dance",
-      startDate: "2025-06-22",
-      image: "https://images.unsplash.com/photo-1686854016020-f1ca2a268099?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      _id: "5",
-      name: "Bookworms Anonymous",
-      category: "Books",
-      startDate: "2025-06-25",
-      image: "https://images.unsplash.com/photo-1686854016020-f1ca2a268099?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      _id: "6",
-      name: "Photography Walks",
-      category: "Photography",
-      startDate: "2025-06-28",
-      image: "https://images.unsplash.com/photo-1686854016020-f1ca2a268099?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ];
-
+  const groups = useLoaderData();
   return (
     <div>
       {/* Hero Carousel */}
@@ -195,34 +152,10 @@ const Home = () => {
 
       {/* Featured Groups */}
       <section className="my-16 px-4 md:px-10">
-        <h2 className="text-3xl font-bold mb-6 text-center">
-          📌 Featured Groups
-        </h2>
+        <h2 className="text-3xl font-bold mb-6 text-center">Featured Groups</h2>
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {groups.map((group) => (
-            <div key={group._id} className="card bg-base-100 shadow-xl">
-              <figure>
-                <img
-                  src={group.image}
-                  alt={group.name}
-                  className="h-48 w-full object-cover"
-                />
-              </figure>
-              <div className="card-body">
-                <h3 className="card-title">{group.name}</h3>
-                <p className="text-sm text-gray-500">
-                  Category: {group.category}
-                </p>
-                <p className="text-sm text-gray-500">
-                  Start Date: {new Date(group.startDate).toDateString()}
-                </p>
-                <div className="card-actions justify-end">
-                  <Link to={`/group/${group._id}`} className="btn btn-primary">
-                    See More
-                  </Link>
-                </div>
-              </div>
-            </div>
+          {groups.slice(0, 6).map((group) => (
+            <GroupCard group={group}></GroupCard>
           ))}
         </div>
       </section>

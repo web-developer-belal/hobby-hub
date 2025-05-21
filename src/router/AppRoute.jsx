@@ -18,6 +18,8 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () =>
+          fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/all-groups`),
         element: <Home />,
       },
       {
@@ -30,10 +32,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/groups",
+        loader: () =>
+          fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/all-groups`),
         element: <AllGroups />,
       },
       {
         path: "/group/:id",
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/group/${params.id}`),
         element: (
           <ProtectedRoute>
             <GroupDetails />
@@ -58,6 +64,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/updateGroup/:id",
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/group/${params.id}`),
         element: (
           <ProtectedRoute>
             <UpdateGroup />
