@@ -151,7 +151,7 @@ const Home = () => {
       </div>
 
       {/* Featured Groups */}
-      <section className="my-16 px-4 md:px-10">
+      <section className="my-16 px-4 md:px-10 ">
         <h2 className="text-3xl font-bold mb-6 text-center">Featured Groups</h2>
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {groups.slice(0, 6).map((group) => (
@@ -161,7 +161,7 @@ const Home = () => {
       </section>
 
       {/* Why HobbyHub */}
-      <section className="bg-base-200 py-16 px-4 md:px-10">
+      <section className="bg-base-100 py-16 px-4 md:px-10">
         <h2 className="text-3xl font-bold text-center mb-10">
           ✨ Why HobbyHub?
         </h2>

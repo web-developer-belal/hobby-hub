@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
 import { toast } from "react-toastify";
@@ -78,7 +78,7 @@ const Header = () => {
           className="text-xl font-extrabold tracking-wide flex items-center space-x-1"
         >
           <span className="text-primary">Hobby</span>
-          <span className="text-black dark:text-white">Hub</span>
+          <span className="text-base-content">Hub</span>
         </Link>
       </div>
 

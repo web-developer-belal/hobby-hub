@@ -50,7 +50,7 @@ const MyGroups = () => {
   };
 
   return (
-    <div className="p-6 shadow max-w-6xl mx-auto rounded-md my-10">
+    <div className="p-6 bg-base-100 shadow max-w-6xl mx-auto rounded-md my-10">
       <h2 className="text-2xl font-bold mb-4">My Groups</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">

@@ -12,7 +12,7 @@ const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
   if (user) {
-    const redirectTo = location.state || "/user/profile";
+    const redirectTo = location.state || "/";
     navigate(redirectTo);
   }
   const handelSubmit = (e) => {

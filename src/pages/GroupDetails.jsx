@@ -56,7 +56,7 @@ const GroupDetails = () => {
           </p>
           <hr className="my-2" />
 
-          <p className="flex items-start gap-2 text-sm text-gray-600 dark:text-white mt-2">
+          <p className="flex items-start gap-2 text-sm mt-2">
             <FaUserCircle className="text-lg mt-1 text-primary" />
             <span className="flex flex-col">
               <span>
@@ -68,14 +68,14 @@ const GroupDetails = () => {
 
           <div className="mt-4">
             {isExpired ? (
-              <div className="text-center">
+              <div className="">
                 <p className="text-red-600 font-semibold mt-2">
                   ⚠️ This group is no longer active.
                 </p>
               </div>
             ) : (
               <div className="text-center">
-                <button onClick={handelJoin} className="btn btn-success mt-2">
+                <button onClick={handelJoin} className="btn btn-success w-full mt-2">
                   Join Group
                 </button>
               </div>
