@@ -4,6 +4,7 @@ import { AiOutlineSmile } from "react-icons/ai";
 import { BiBulb } from "react-icons/bi";
 import { Typewriter } from "react-simple-typewriter";
 import GroupCard from "../components/GroupCard";
+import Testimonials from "../components/Testimonials";
 
 const Home = () => {
   const groups = useLoaderData();
@@ -41,7 +42,10 @@ const Home = () => {
                 Discover and join hobby groups in your area. From book clubs to
                 hiking adventures, find your perfect match today!
               </p>
-              <Link to="/groups" className="btn btn-primary mt-6 px-8 py-3 text-lg">
+              <Link
+                to="/groups"
+                className="btn btn-primary mt-6 px-8 py-3 text-lg"
+              >
                 Explore Groups
               </Link>
             </div>
@@ -87,7 +91,10 @@ const Home = () => {
                 Can't find a group for your hobby? Create your own and invite
                 like-minded people to join your community!
               </p>
-              <Link to="/createGroup" className="btn btn-secondary mt-6 px-8 py-3 text-lg">
+              <Link
+                to="/createGroup"
+                className="btn btn-secondary mt-6 px-8 py-3 text-lg"
+              >
                 Create Group
               </Link>
             </div>
@@ -133,7 +140,10 @@ const Home = () => {
                 Expand your social circle while doing what you love. Our groups
                 meet regularly to share knowledge and experiences.
               </p>
-              <Link to="/groups" className="btn btn-accent mt-6 px-8 py-3 text-lg">
+              <Link
+                to="/groups"
+                className="btn btn-accent mt-6 px-8 py-3 text-lg"
+              >
                 Join Now
               </Link>
             </div>
@@ -185,32 +195,7 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 px-4 md:px-10">
-        <h2 className="text-3xl font-bold text-center mb-10">
-          💬 What Our Users Say
-        </h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3].map((n) => (
-            <div key={n} className="p-6 rounded-lg shadow-lg bg-base-100">
-              <div className="flex items-center mb-4">
-                <img
-                  src={`https://i.pravatar.cc/100?img=${n + 10}`}
-                  alt="User"
-                  className="w-12 h-12 rounded-full mr-3"
-                />
-                <div>
-                  <h4 className="font-semibold">User {n}</h4>
-                  <p className="text-sm text-gray-500">Hobby Enthusiast</p>
-                </div>
-              </div>
-              <p>
-                “HobbyHub helped me find a local art group I love! I’ve made
-                friends and learned so much.”
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <Testimonials></Testimonials>
     </div>
   );
 };
