@@ -3,11 +3,21 @@ import { format, isBefore } from "date-fns";
 import { Typewriter } from "react-simple-typewriter";
 import CountUp from "react-countup";
 import { FaUserCircle, FaUsers } from "react-icons/fa";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const GroupDetails = () => {
   const group = useLoaderData();
   const isExpired = isBefore(new Date(group.startDate), new Date());
-  const handelJoin = () => {};
+  const [joined, setJoined] = useState(false);
+  const handelJoin = () => {
+    if (joined) {
+      return toast.error("You already joined here.");
+    } else {
+      setJoined(true);
+      return toast.success("Joined successful");
+    }
+  };
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <div className="card lg:card-side bg-base-100 shadow-sm">
@@ -75,8 +85,11 @@ const GroupDetails = () => {
               </div>
             ) : (
               <div className="text-center">
-                <button onClick={handelJoin} className="btn btn-success w-full mt-2">
-                  Join Group
+                <button
+                  onClick={handelJoin}
+                  className={`btn btn-${joined ? 'success':'warning'} w-full mt-2`}
+                >
+                  {joined ? "You have join this group" : "Join group"}
                 </button>
               </div>
             )}
