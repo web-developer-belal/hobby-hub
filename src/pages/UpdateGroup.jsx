@@ -32,8 +32,11 @@ const UpdateGroup = () => {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-6 text-center">Update Group</h2>
-      <form onSubmit={handleUpdate} className="grid grid-cols-1 gap-4">
+     
+      <form onSubmit={handleUpdate} className="grid grid-cols-1 gap-4 p-3 md:p-6 rounded-md bg-base-100"
+      >
+            <h2 className="text-3xl font-bold mb-6 text-center">Update Group</h2>
+
         <input
           type="text"
           name="groupName"

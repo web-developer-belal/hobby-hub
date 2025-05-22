@@ -23,7 +23,7 @@ const CreateGroup = () => {
         if (data.insertedId) {
           toast.success("Group Created Successfully!");
           form.reset();
-        }else{
+        } else {
           toast.error("Something wen'\t wrong.");
         }
       });
@@ -31,8 +31,12 @@ const CreateGroup = () => {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-6 text-center">Create New Group</h2>
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
+      
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 gap-4 shadow-md p-3 md:p-6 rounded-md bg-base-100"
+      >
+        <h2 className="text-3xl font-bold mb-6 text-center">Create New Group</h2>
         <input
           type="text"
           name="groupName"
