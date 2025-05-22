@@ -57,16 +57,19 @@ const Register = () => {
   };
 
   return (
-    <div data-aos="fade-up" className="flex flex-col min-h-[80vh] items-center justify-center px-4 my-8 ">
-      
+    <div className="flex flex-col min-h-[80vh] items-center justify-center px-4 my-8 ">
       <form
         onSubmit={handelSubmit}
-        className="card bg-base-100 w-full max-w-sm shadow-sm rounded-sm"
+        className="card bg-base-100 w-full max-w-sm shadow-sm rounded-lg"
       >
         <div className="card-body ">
-          <h3 className="text-lg font-extrabold border-b-2 border-black w-fit text-black mb-3">
-            Register
-          </h3>
+          <div className="text-center mb-3">
+            <Link to="/" className="text-2xl font-bold">
+              <span className="text-primary">Hobby</span>
+              <span className="text-base-content">Hub</span>
+            </Link>
+            <p className="text-center mt-1">Enter your login credentials.</p>
+          </div>
 
           <label className="label">Name</label>
           <input
@@ -96,7 +99,12 @@ const Register = () => {
 
           <label className="label">Password</label>
           <label className="input">
-            <input type={showPassword?'text':'password'} name="password" required placeholder="Password" />
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              required
+              placeholder="Password"
+            />
             {showPassword ? (
               <FaEye
                 onClick={() => setShowPassword(!showPassword)}
@@ -131,7 +139,7 @@ const Register = () => {
           <p className="text-sm text-center">
             Already have an account?{" "}
             <Link to="/login" className="link link-hover text-blue-500">
-              Login here
+              Login now.
             </Link>
           </p>
         </div>

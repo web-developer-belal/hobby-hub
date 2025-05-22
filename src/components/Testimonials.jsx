@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 
 const Testimonials = () => {
   return (
-    <section className="py-16 px-4 md:px-10">
+    <section className="py-16 md:py-20 px-4 md:px-10">
       <h2 className="text-3xl text-accent font-bold text-center mb-10">
         What Our Users Say
       </h2>

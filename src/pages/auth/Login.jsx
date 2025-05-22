@@ -52,16 +52,19 @@ const Login = () => {
       });
   };
   return (
-    <div data-aos="fade-up" className="flex flex-col min-h-[80vh] items-center justify-center">
-      
+    <div className="flex flex-col min-h-[80vh] items-center justify-center">
       <form
         onSubmit={handelSubmit}
-        className="card bg-base-100 w-full max-w-sm shrink-0 shadow-sm rounded-sm"
+        className="card bg-base-100 w-full max-w-sm shrink-0 shadow-sm rounded-md"
       >
         <div className="card-body">
-          <h3 className="text-lg font-extrabold border-b-2 border-black w-fit text-black mb-3">
-            Login
-          </h3>
+          <div className="text-center mb-3">
+            <Link to="/" className="text-2xl font-bold">
+              <span className="text-primary">Hobby</span>
+              <span className="text-base-content">Hub</span>
+            </Link>
+            <p className="text-center mt-1">Enter your login credentials.</p>
+          </div>
           <fieldset className="fieldset">
             <label className="label">Email</label>
             <input
@@ -90,11 +93,7 @@ const Login = () => {
                 />
               )}
             </label>
-            <div>
-              <Link to="/forget-password" className="link link-hover">
-                Forgot password?
-              </Link>
-            </div>
+           
             <button
               type="submit"
               className="btn btn-neutral mt-4 flex items-center justify-center gap-2"
@@ -109,7 +108,7 @@ const Login = () => {
             <button
               type="button"
               onClick={handleGoogleLogin}
-              className="btn btn-outline w-full flex items-center justify-center gap-2"
+              className="btn btn-outline w-full flex items-center justify-center gap-2 mt-2"
             >
               <FcGoogle size={20} /> Continue with Google
             </button>
