@@ -57,11 +57,12 @@ const UpdateGroup = () => {
           <option>Photography</option>
           <option>Video Gaming</option>
           <option>Fishing</option>
+          <option>Gardening</option>
           <option>Running</option>
           <option>Cooking</option>
           <option>Reading</option>
           <option>Writing</option>
-          <option>Hiking</option>
+          <option>Other</option>
         </select>
 
         <textarea
