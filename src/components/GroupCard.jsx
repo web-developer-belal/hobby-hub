@@ -5,7 +5,7 @@ import { Link } from "react-router";
 const GroupCard = ({ group }) => {
   return (
     <div>
-      <div key={group._id} className="card bg-base-100 shadow-xl">
+      <div className="card bg-base-100 shadow-xl">
         <figure>
           <img
             src={group.imageUrl}

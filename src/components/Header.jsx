@@ -114,34 +114,36 @@ const Header = () => {
           />
         </label>
 
-        {/* Auth Actions */}
-        {!user ? (
-          <Link to="/login" className="btn bg-primary text-white">
-            Login
-          </Link>
-        ) : (
-          <>
-            <button
-              onClick={handleLogout}
-              className="btn btn-error hidden md:flex"
-            >
-              Logout
-            </button>
-            <div
-              className="avatar"
-              data-tooltip-id="user-tooltip"
-              data-tooltip-content={user.displayName}
-            >
-              <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img
-                  src={user.photoURL || "/fakeuser.png"}
-                  alt={user.displayName || "User"}
-                />
-                <Tooltip id="user-tooltip" place="bottom" />
+        <div className="hidden md:flex gap-2">
+          {/* Auth Actions */}
+          {!user ? (
+            <Link to="/login" className="btn bg-primary text-white">
+              Login
+            </Link>
+          ) : (
+            <>
+              <button
+                onClick={handleLogout}
+                className="btn btn-error hidden md:flex"
+              >
+                Logout
+              </button>
+              <div
+                className="avatar"
+                data-tooltip-id="user-tooltip"
+                data-tooltip-content={user.displayName}
+              >
+                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img
+                    src={user.photoURL || "/fakeuser.avif"}
+                    alt={user.displayName || "User"}
+                  />
+                  <Tooltip id="user-tooltip" place="bottom" />
+                </div>
               </div>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

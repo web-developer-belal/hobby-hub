@@ -8,13 +8,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Register = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const { user, setUser, registerUser, googleSignIn } = use(AuthContext);
+  const { setUser, registerUser, googleSignIn } = use(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  if (user) {
-    const redirectTo = location.state || "/";
-    navigate(redirectTo);
-  }
+
+  
   const handelSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -77,7 +75,7 @@ const Register = () => {
               <span className="text-primary">Hobby</span>
               <span className="text-base-content">Hub</span>
             </Link>
-            <p className="text-center mt-1">Enter your login credentials.</p>
+            <p className="text-center mt-1">Don't worry your data is safe here.</p>
           </div>
 
           <label className="label">Name</label>

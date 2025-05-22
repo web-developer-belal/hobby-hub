@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-toastify";
@@ -11,10 +11,12 @@ const Login = () => {
   const { user, setUser, signInUser, googleSignIn } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  if (user) {
-    const redirectTo = location.state || "/";
-    navigate(redirectTo);
-  }
+  useEffect(() => {
+    if (user) {
+      const redirectTo = location.state || "/";
+      navigate(redirectTo, { replace: true });
+    }
+  }, [user, navigate, location.state]);
 
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -93,7 +95,7 @@ const Login = () => {
                 />
               )}
             </label>
-           
+
             <button
               type="submit"
               className="btn btn-neutral mt-4 flex items-center justify-center gap-2"
