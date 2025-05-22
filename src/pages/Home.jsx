@@ -15,7 +15,7 @@ const Home = () => {
         <div id="slide1" className="carousel-item relative w-full">
           <div className="absolute inset-0 bg-black opacity-50"></div>
           <img
-            src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+            src="https://i.ibb.co/JRXR3gmZ/Dashboard-835-gardening-03-24.jpg"
             className="w-full h-full object-cover"
             alt="HobbyHub Banner"
           />
@@ -41,9 +41,9 @@ const Home = () => {
                 Discover and join hobby groups in your area. From book clubs to
                 hiking adventures, find your perfect match today!
               </p>
-              <button className="btn btn-primary mt-6 px-8 py-3 text-lg">
+              <Link to="/groups" className="btn btn-primary mt-6 px-8 py-3 text-lg">
                 Explore Groups
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -61,7 +61,7 @@ const Home = () => {
         <div id="slide2" className="carousel-item relative w-full">
           <div className="absolute inset-0 bg-blue-900 opacity-50"></div>
           <img
-            src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            src="https://i.ibb.co/Wp4h2bNS/holly-mandarich-Y90-GKs-TKx-BM-unsplash.webp"
             className="w-full h-full object-cover"
             alt="Coding Groups"
           />
@@ -87,9 +87,9 @@ const Home = () => {
                 Can't find a group for your hobby? Create your own and invite
                 like-minded people to join your community!
               </p>
-              <button className="btn btn-secondary mt-6 px-8 py-3 text-lg">
+              <Link to="/createGroup" className="btn btn-secondary mt-6 px-8 py-3 text-lg">
                 Create Group
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -107,7 +107,7 @@ const Home = () => {
         <div id="slide3" className="carousel-item relative w-full">
           <div className="absolute inset-0 bg-green-900 opacity-50"></div>
           <img
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            src="https://i.ibb.co/G4s7GWZz/Jeddah-Fishing-Trips.jpg"
             className="w-full h-full object-cover"
             alt="Community Meeting"
           />
@@ -133,9 +133,9 @@ const Home = () => {
                 Expand your social circle while doing what you love. Our groups
                 meet regularly to share knowledge and experiences.
               </p>
-              <button className="btn btn-accent mt-6 px-8 py-3 text-lg">
+              <Link to="/groups" className="btn btn-accent mt-6 px-8 py-3 text-lg">
                 Join Now
-              </button>
+              </Link>
             </div>
           </div>
 

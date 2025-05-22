@@ -9,29 +9,18 @@
     --color-base-200: #212121; 
     --color-base-300: #1D232A; 
     --color-base-content: oklch(95% 0.01 260); 
-    
-   
     --color-primary: oklch(65% 0.25 160);
     --color-primary-content: oklch(98% 0.01 160);
-    
-   
     --color-secondary: oklch(60% 0.22 300);
     --color-secondary-content: oklch(98% 0.01 300);
-    
-   
     --color-accent: oklch(75% 0.3 70);
     --color-accent-content: oklch(15% 0.05 70);
-    
-   
     --color-neutral: oklch(25% 0.02 260);
     --color-neutral-content: oklch(85% 0.01 260);
-    
-   
     --color-info: oklch(70% 0.2 220); 
     --color-success: oklch(65% 0.25 145); 
     --color-warning: oklch(75% 0.3 50); 
     --color-error: oklch(65% 0.3 25); 
-    
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
   
 }
