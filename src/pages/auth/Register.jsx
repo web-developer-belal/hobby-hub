@@ -23,6 +23,17 @@ const Register = () => {
     const email = form.email.value;
     //const photoUrl = form.photo_url.value;
     const password = form.password.value;
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const isValidLength = password.length >= 6;
+
+    if (!hasUppercase || !hasLowercase || !isValidLength) {
+      setLoading(false);
+      toast.error(
+        "Password must be at least 6 characters, include an uppercase and a lowercase letter."
+      );
+      return;
+    }
     registerUser(email, password)
       .then((userCredential) => {
         setUser(userCredential.user);
@@ -36,8 +47,6 @@ const Register = () => {
         toast.error("Something wen" / "t wrong");
         setLoading(false);
       });
-
-    // Add your form submission logic here
   };
 
   const handleGoogleLogin = () => {
