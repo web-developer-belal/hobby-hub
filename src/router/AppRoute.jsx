@@ -10,6 +10,8 @@ import CreateGroup from "../pages/CreateGroup";
 import MyGroups from "../pages/MyGroups";
 import UpdateGroup from "../pages/UpdateGroup";
 import ProtectedRoute from "../components/ProtectedRoute";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
         loader: () =>
           fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/all-groups`),
         element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/login",

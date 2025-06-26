@@ -1,13 +1,15 @@
-.menu li a{
-    border-radius: 0;
-    font-weight: 700;
+.menu {
+  gap: 10px;
 }
-.menu{
-    gap:10px;
 
+.menu li a {
+  border-radius: 0;
+  font-weight: 500;
 }
-.menu li a:hover{
-    background: none;
-    color:#ff5543;
-    border-bottom: 2px solid #ff5543;
+
+.custom-nav-link:hover,.custom-nav-link.active{
+    font-weight: 700;
+    background: none!important;
+    border:1px solid;
+    border-radius: 40px;
 }

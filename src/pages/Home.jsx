@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div>
       {/* Hero Carousel */}
-      <div className="carousel w-full h-[80vh]">
+      <div className="carousel w-full h-screen">
         {/* Slide 1 */}
         <div id="slide1" className="carousel-item relative w-full">
           <div className="absolute inset-0 bg-black opacity-50"></div>

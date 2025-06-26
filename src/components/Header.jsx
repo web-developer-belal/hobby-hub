@@ -3,10 +3,25 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthProvider";
 import { toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
+import "./header.css";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
   const [theme, setTheme] = useState("light");
+
+  // Navigation items
+  const navItems = [
+    { path: "/", label: "Home" },
+    { path: "/about", label: "About us" },
+    { path: "/contact", label: "Contact" },
+    { path: "/groups", label: "All Groups" },
+  ];
+
+  // Protected navigation items (only shown when user is logged in)
+  const protectedNavItems = [
+    { path: "/createGroup", label: "Create Group" },
+    { path: "/myGroups", label: "My Groups" },
+  ];
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -22,8 +37,19 @@ const Header = () => {
       .catch(() => toast.error("Logout failed"));
   };
 
+  // Render navigation links
+  const renderNavLinks = (items) => {
+    return items.map((item) => (
+      <li key={item.path}>
+        <NavLink className="custom-nav-link" to={item.path}>
+          {item.label}
+        </NavLink>
+      </li>
+    ));
+  };
+
   return (
-    <div className="navbar bg-base-100 shadow-sm px-5">
+    <div className="navbar fixed top-2 left-1/2 transform -translate-x-1/2 z-50 backdrop-blur-md bg-base-100/30 shadow-md transition-all duration-300 w-[95%] max-w-[1500px] mx-auto rounded-box md:rounded-[50px] px-5 md:px-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -46,22 +72,8 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/groups">All Groups</NavLink>
-            </li>
-            {user && (
-              <>
-                <li>
-                  <NavLink to="/createGroup">Create Group</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/myGroups">My Groups</NavLink>
-                </li>
-              </>
-            )}
+            {renderNavLinks(navItems)}
+            {user && renderNavLinks(protectedNavItems)}
             {!user ? (
               <li>
                 <Link to="/login">Login</Link>
@@ -84,22 +96,8 @@ const Header = () => {
 
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/groups">All Groups</NavLink>
-          </li>
-          {user && (
-            <>
-              <li>
-                <NavLink to="/createGroup">Create Group</NavLink>
-              </li>
-              <li>
-                <NavLink to="/myGroups">My Groups</NavLink>
-              </li>
-            </>
-          )}
+          {renderNavLinks(navItems)}
+          {user && renderNavLinks(protectedNavItems)}
         </ul>
       </div>
 
@@ -117,7 +115,7 @@ const Header = () => {
         <div className="hidden md:flex gap-2">
           {/* Auth Actions */}
           {!user ? (
-            <Link to="/login" className="btn bg-primary text-white">
+            <Link to="/login" className="btn bg-primary border-0 rounded-full shadow-none px-5 text-white">
               Login
             </Link>
           ) : (
