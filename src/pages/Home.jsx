@@ -1,17 +1,28 @@
+// src/pages/Home.jsx
 import { Link, useLoaderData } from "react-router";
-import { MdOutlineConnectWithoutContact } from "react-icons/md";
+import { MdEmail, MdOutlineConnectWithoutContact } from "react-icons/md";
 import { AiOutlineSmile } from "react-icons/ai";
 import { BiBulb } from "react-icons/bi";
 import { Typewriter } from "react-simple-typewriter";
 import GroupCard from "../components/GroupCard";
 import Testimonials from "../components/Testimonials";
+import SectionTitle from "../components/SectionTitle";
+import { FaArrowDown } from "react-icons/fa";
+import Lottie from "lottie-react";
+import newsLatterAnimation from "../assets/Animation - 1751013875294.json";
 
 const Home = () => {
   const groups = useLoaderData();
+
+  const handleScrollToSection = () => {
+    const el = document.getElementById("featured-section");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div>
       {/* Hero Carousel */}
-      <div className="carousel w-full h-screen">
+      <div className="carousel w-full h-screen relative">
         {/* Slide 1 */}
         <div id="slide1" className="carousel-item relative w-full">
           <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -49,6 +60,15 @@ const Home = () => {
                 Explore Groups
               </Link>
             </div>
+          </div>
+
+          {/* Animated Down Arrow */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer animate-bounce">
+            <FaArrowDown
+              size={30}
+              className="text-white opacity-80"
+              onClick={handleScrollToSection}
+            />
           </div>
 
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -161,20 +181,18 @@ const Home = () => {
       </div>
 
       {/* Featured Groups */}
-      <section className="my-16 px-4 md:px-10 ">
-        <h2 className="text-3xl font-bold mb-6 text-center">Featured Groups</h2>
+      <section id="featured-section" className="my-16 px-4 md:px-10">
+        <SectionTitle title="Featured Groups" />
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {groups.slice(0, 8).map((group) => (
-            <GroupCard group={group} key={group._id}></GroupCard>
+            <GroupCard group={group} key={group._id} />
           ))}
         </div>
       </section>
 
       {/* Why HobbyHub */}
       <section className="bg-base-100 py-16 md:py-20 px-4 md:px-10">
-        <h2 className="text-3xl font-bold text-center mb-10">
-          ✨ Why HobbyHub?
-        </h2>
+        <SectionTitle title="✨ Why HobbyHub?" />
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 text-center">
           <div>
             <MdOutlineConnectWithoutContact className="text-4xl mx-auto text-primary" />
@@ -195,7 +213,32 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <Testimonials></Testimonials>
+      <Testimonials />
+
+      {/* Newsletter CTA */}
+      <section className="bg-success/40 text-primary-content py-16 px-4 md:px-10">
+        <div className="max-w-40 mx-auto">
+          <Lottie animationData={newsLatterAnimation} loop={true} />
+        </div>
+        <div className="max-w-xl mx-auto text-center">
+          <p className="mb-4 text-lg text-black">
+            Subscribe to our newsletter for hobby inspiration, tips, and new
+            group announcements.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
+            <div className="relative w-full max-w-sm text-success-content">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="input input-bordered w-full pr-4 text-base text-success-content"
+              />
+            </div>
+            <button className="btn btn-accent rounded-md shadow-sm px-6">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

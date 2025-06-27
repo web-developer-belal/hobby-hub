@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
-import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { format } from "date-fns";
 import CountUp from "react-countup";
@@ -99,7 +98,7 @@ const MyGroups = () => {
                   <td>
                     <div className="flex gap-2">
                       <Link
-                        to={`/updateGroup/${data._id}`}
+                        to={`/dashboard/updateGroup/${data._id}`}
                         className="btn btn-success btn-sm"
                       >
                         Edit

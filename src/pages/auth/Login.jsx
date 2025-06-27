@@ -1,5 +1,5 @@
-import React, { use, useEffect, useState } from "react";
-import { Link, Navigate, useLocation, useNavigate } from "react-router";
+import { use, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";

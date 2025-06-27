@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaBook, FaVideo, FaDownload, FaChessKnight } from 'react-icons/fa';
 import resourcesImg from '../assets/resources.jpg';
+import { toast } from 'react-toastify';
 
 const ResourcesPage = () => {
   const categories = [
@@ -19,6 +20,11 @@ const ResourcesPage = () => {
       ]
     }
   ];
+
+  const unknownButton =(e)=>{
+    e.preventDefault()
+    toast.success('Downloaded successfully.')
+  }
 
   return (
     <div className="min-h-screen pt-30 bg-gradient-to-br from-base-100 to-base-200 py-12 px-4 sm:px-6 lg:px-8">
@@ -56,7 +62,7 @@ const ResourcesPage = () => {
                     <div>
                       <h3 className="text-lg font-semibold">{resource.title}</h3>
                       <p className="text-base-content/70">{resource.type}</p>
-                      <button className="btn btn-sm btn-ghost mt-2 gap-2">
+                      <button onClick={unknownButton} className="btn btn-sm btn-ghost mt-2 gap-2">
                         <FaDownload /> Download
                       </button>
                     </div>

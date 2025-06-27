@@ -16,10 +16,10 @@ const Footer = () => {
 
       <nav>
         <span className="footer-title">Navigation</span>
-        <Link to="/" className="link link-hover">Home</Link>
+        <Link to="/about-us" className="link link-hover">About us</Link>
         <Link to="/groups" className="link link-hover">All Groups</Link>
-        <Link to="/createGroup" className="link link-hover">Create Group</Link>
-        <Link to="/myGroups" className="link link-hover">My Groups</Link>
+        <Link to="/dashboard/createGroup" className="link link-hover">Create Group</Link>
+        <Link to="/dashboard/myGroups" className="link link-hover">My Groups</Link>
       </nav>
 
       <nav>

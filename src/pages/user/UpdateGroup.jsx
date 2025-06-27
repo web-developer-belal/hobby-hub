@@ -32,7 +32,7 @@ const UpdateGroup = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="">
       <form
         onSubmit={handleUpdate}
         className="grid grid-cols-1 gap-4 p-3 md:p-6 rounded-md bg-base-100"

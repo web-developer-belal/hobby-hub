@@ -15,7 +15,7 @@ const Header = () => {
     { path: "/events", label: "Events" },
     { path: "/resources-tutorial", label: "Resources" },
     { path: "/groups", label: "All Groups" },
-    { path: "/about", label: "About us" },
+    { path: "/about-us", label: "About us" },
     { path: "/contact", label: "Contact" },
   ];
 
@@ -122,7 +122,7 @@ const Header = () => {
             <>
               <button
                 onClick={handleLogout}
-                className="btn btn-error hidden md:flex"
+                className="btn btn-error hidden md:flex border-0 rounded-full shadow-none px-5 text-white"
               >
                 Logout
               </button>

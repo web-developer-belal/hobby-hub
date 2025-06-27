@@ -32,7 +32,7 @@ const About = () => {
                 <div className="max-w-6xl mx-auto">
                     <div className="flex flex-col md:flex-row gap-12 items-center">
                         <div className="md:w-1/2">
-                            <div className="mockup-window border bg-base-300/50 backdrop-blur-sm">
+                            <div className="mockup-window bg-base-300/50 backdrop-blur-sm">
                                 <img 
                                     src={teamImage} 
                                     alt="Team working together" 
