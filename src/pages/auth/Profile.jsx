@@ -34,7 +34,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-h-screen max-w-5xl mx-auto my-10 grid grid-cols-1 md:grid-cols-5 gap-5 md:gap-10">
+    <div className="max-h-screen pt-30 max-w-5xl mx-auto my-10 grid grid-cols-1 md:grid-cols-5 gap-5 md:gap-10">
       <Helmet>
         <title>{user.displayName} profile | PetPawJoy</title>
       </Helmet>

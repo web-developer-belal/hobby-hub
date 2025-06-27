@@ -64,7 +64,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-[80vh] items-center justify-center px-4 my-8 ">
+    <div className="flex pt-20 flex-col min-h-[80vh] items-center justify-center px-4 my-8 ">
       <form
         onSubmit={handelSubmit}
         className="card bg-base-100 w-full max-w-sm shadow-sm rounded-lg"

@@ -14,7 +14,7 @@ const GroupCard = ({ group }) => {
       <div className="card-body p-5">
         <h3 className="card-title text-base-content">
           {group.groupName}{" "}
-          <span className="badge badge-success bg-success/10 rounded-full text-success border-success/30">
+          <span className="badge badge-success bg-success/10 rounded-full text-success h-auto text-xs border-success/30">
             {group.category}
           </span>
         </h3>

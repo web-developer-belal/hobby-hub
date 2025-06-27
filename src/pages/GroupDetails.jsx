@@ -19,7 +19,7 @@ const GroupDetails = () => {
     }
   };
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="p-6 pt-30 max-w-4xl mx-auto">
       <div className="card lg:card-side bg-base-100 shadow-sm">
         <figure className="lg:w-1/2">
           <img

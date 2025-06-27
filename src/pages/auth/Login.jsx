@@ -13,7 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
-      const redirectTo = location.state || "/";
+      const redirectTo = location.state || "/dashboard";
       navigate(redirectTo, { replace: true });
     }
   }, [user, navigate, location.state]);
@@ -32,7 +32,7 @@ const Login = () => {
         setLoading(false);
         toast.success("Login successful");
         form.reset();
-        const redirectTo = location.state || "/";
+        const redirectTo = location.state || "/dashboard";
         navigate(redirectTo);
       })
       .catch(() => {
@@ -46,7 +46,7 @@ const Login = () => {
       .then((result) => {
         setUser(result.user);
         toast.success("Login successful");
-        const redirectTo = location.state || "/";
+        const redirectTo = location.state || "/dashboard";
         navigate(redirectTo);
       })
       .catch(() => {
@@ -54,7 +54,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="flex flex-col min-h-[80vh] items-center justify-center">
+    <div className="flex pt-20 flex-col min-h-[80vh] items-center justify-center">
       <form
         onSubmit={handelSubmit}
         className="card bg-base-100 w-full max-w-sm shrink-0 shadow-sm rounded-md"

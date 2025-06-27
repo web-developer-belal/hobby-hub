@@ -12,16 +12,14 @@ const Header = () => {
   // Navigation items
   const navItems = [
     { path: "/", label: "Home" },
+    { path: "/events", label: "Events" },
+    { path: "/resources-tutorial", label: "Resources" },
+    { path: "/groups", label: "All Groups" },
     { path: "/about", label: "About us" },
     { path: "/contact", label: "Contact" },
-    { path: "/groups", label: "All Groups" },
   ];
 
-  // Protected navigation items (only shown when user is logged in)
-  const protectedNavItems = [
-    { path: "/createGroup", label: "Create Group" },
-    { path: "/myGroups", label: "My Groups" },
-  ];
+  const protectedNavItems = [{ path: "/dashboard", label: "Dashboard" }];
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -97,7 +95,6 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {renderNavLinks(navItems)}
-          {user && renderNavLinks(protectedNavItems)}
         </ul>
       </div>
 
@@ -115,7 +112,10 @@ const Header = () => {
         <div className="hidden md:flex gap-2">
           {/* Auth Actions */}
           {!user ? (
-            <Link to="/login" className="btn bg-primary border-0 rounded-full shadow-none px-5 text-white">
+            <Link
+              to="/login"
+              className="btn bg-primary border-0 rounded-full shadow-none px-5 text-white"
+            >
               Login
             </Link>
           ) : (
@@ -126,7 +126,8 @@ const Header = () => {
               >
                 Logout
               </button>
-              <div
+              <Link
+                to="/dashboard"
                 className="avatar"
                 data-tooltip-id="user-tooltip"
                 data-tooltip-content={user.displayName}
@@ -138,7 +139,7 @@ const Header = () => {
                   />
                   <Tooltip id="user-tooltip" place="bottom" />
                 </div>
-              </div>
+              </Link>
             </>
           )}
         </div>

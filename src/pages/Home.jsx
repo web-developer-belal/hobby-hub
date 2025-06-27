@@ -163,8 +163,8 @@ const Home = () => {
       {/* Featured Groups */}
       <section className="my-16 px-4 md:px-10 ">
         <h2 className="text-3xl font-bold mb-6 text-center">Featured Groups</h2>
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {groups.slice(0, 6).map((group) => (
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          {groups.slice(0, 8).map((group) => (
             <GroupCard group={group} key={group._id}></GroupCard>
           ))}
         </div>

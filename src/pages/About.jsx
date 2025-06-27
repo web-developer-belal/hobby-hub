@@ -3,6 +3,7 @@ import { FaUsers, FaLightbulb, FaHandsHelping, FaLaptopCode } from 'react-icons/
 import { GiEarthAmerica } from 'react-icons/gi';
 import teamImage from '../assets/team.jpg';
 import { Link } from 'react-router';
+import Testimonials from '../components/Testimonials';
 
 const About = () => {
     return (
@@ -156,6 +157,8 @@ const About = () => {
                     </div>
                 </div>
             </section>
+
+            <Testimonials></Testimonials>
         </div>
     );
 };
