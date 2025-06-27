@@ -11,12 +11,21 @@ import {
 } from "react-icons/fa";
 import { MdSupportAgent } from "react-icons/md";
 import contactImage from "../assets/contact.jpg";
+import contactAnimation from "../assets/Animation - 1751020444575.json";
+import Lottie from "lottie-react";
+import { toast } from "react-toastify";
 
 const Contact = () => {
+  const sendData = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    toast.success("Send message successfully");
+    form.reset();
+  };
   return (
     <div className="min-h-screen pt-30 bg-gradient-to-br from-base-100 to-base-200 py-12 px-4 sm:px-6 lg:px-8">
       {/* Hero Section with Image */}
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 mb-16">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8 mb-16 md:px-8">
         <div className="md:w-1/2">
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Get in <span className="text-base-content">Touch</span>
@@ -43,11 +52,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="md:w-1/2">
-          <img
-            src={contactImage}
-            alt="Contact us"
-            className="rounded-xl w-full h-auto max-h-80 object-cover"
-          />
+          <Lottie animationData={contactAnimation}></Lottie>
         </div>
       </div>
 
@@ -122,12 +127,31 @@ const Contact = () => {
           <h2 className="text-2xl font-bold mb-6 text-base-content">
             Send Us a Message
           </h2>
-          <form className="space-y-4">
+          <form onSubmit={sendData} className="space-y-4">
             <fieldset className="fieldset">
-              <label className="label">Email</label>
-              <input type="email w-full" className="input" placeholder="Email" />
-              <label className="label">Password</label>
-              <input type="password" className="input w-full" placeholder="Password" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div>
+                  <label className="label">Name</label>
+                  <input type="text" className="input" placeholder="Full name" required />
+                </div>
+                <div>
+                  <label className="label">Email</label>
+                  <input
+                    type="email"
+                    className="input"
+                    placeholder="Email" required
+                  />
+                </div>
+              </div>
+
+              <label className="label">Subject</label>
+              <input
+                type="text"
+                className="input w-full"
+                placeholder="Subject" required
+              />
+              <label className="label">Message</label>
+              <textarea name="message" className="textarea w-full" placeholder="Write your message.." required></textarea>
              
             </fieldset>
 

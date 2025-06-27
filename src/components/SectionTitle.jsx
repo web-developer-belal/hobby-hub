@@ -1,11 +1,11 @@
 const SectionTitle = ({ title, center = true, subtitle = null }) => {
   return (
-    <div className={`${center ? 'text-center' : 'text-left'} mb-12`}>
+    <div className={`${center ? 'text-center' : 'text-left'} mb-5`}>
       <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-3">
         {title}
       </h2>
       {subtitle && (
-        <p className="font-sans text-lg text-base-content/70 max-w-2xl mx-auto">
+        <p className="font-sans text-sm text-base-content/70 max-w-2xl mx-auto">
           {subtitle}
         </p>
       )}
